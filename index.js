@@ -11,7 +11,15 @@ const server = http
 
     switch (req.method) {
       case 'GET':
-        if (req.url === '/enquetes/yaki-tofu') {
+        if (req.url === '/'){
+            res.write('<!DOCTYPE html><html lang="ja"><body>' +
+            '<h1>アンケートフォーム</h1>' +
+            '<a href="/enquetes">アンケート一覧</a>' +
+            '</body></html>');
+              } else if(req.url ==='/enquetes'){
+                res.write(pug.renderFile(' ./enquetes.pug'))
+              } else if (req.url === '/enquetes/yaki-tofu') 
+          {
           res.write(
             pug.renderFile('./form.pug', {
               path: req.url,
